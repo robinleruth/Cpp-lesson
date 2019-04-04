@@ -1,0 +1,78 @@
+/*
+Robin Leruth
+3242277
+SENG1120
+Friday 6th November
+*/
+
+namespace robin_assignment3
+{
+template<typename Item>
+BTNode<Item>::BTNode(){
+	m_data = NULL;
+	m_first_child = NULL;
+	m_second_child = NULL;
+	m_parent = NULL;
+}
+
+template<typename Item>
+BTNode<Item>::BTNode(Item *data, BTNode *first_child, BTNode *second_child, BTNode *parent){
+	m_data = data;
+	m_first_child = first_child;
+	m_second_child = second_child;
+	m_parent = parent;
+}
+
+template<typename Item>
+BTNode<Item>::~BTNode(){
+	delete m_data;
+	if(m_first_child != NULL)
+		delete m_first_child;
+	if(m_second_child != NULL)
+		delete m_second_child;
+}
+
+template<typename Item>
+void BTNode<Item>::set_data(Item *data){
+	m_data = data;
+}
+
+template<typename Item>
+void BTNode<Item>::set_parent(BTNode *parent){
+	m_parent = parent;
+}
+
+template<typename Item>
+void BTNode<Item>::set_left(BTNode *first_child){
+	m_first_child = first_child;
+}
+
+template<typename Item>
+void BTNode<Item>::set_right(BTNode *second_child){
+	m_second_child = second_child;
+}
+
+template<typename Item>
+Item* BTNode<Item>::get_data() const{
+	if(this == NULL) return NULL;
+	return m_data;
+}
+
+template<typename Item>
+BTNode<Item>* BTNode<Item>::get_parent(){
+	if(this == NULL) return NULL;
+	return m_parent;
+}
+
+template<typename Item>
+BTNode<Item>* BTNode<Item>::get_left(){
+	if(this == NULL) return NULL;
+	return m_first_child;
+}
+
+template<typename Item>
+BTNode<Item>* BTNode<Item>::get_right(){
+	if(this == NULL) return NULL;
+	return m_second_child;
+}
+}
